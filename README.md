@@ -8,7 +8,7 @@ Toda a aplicação está em container. Para realizar a instalação da aplicaç�
 
 ## Tecnologias envolvidas
 
-- .NET 8
+- .NET 7
 - SQL Server
 - Kafka
 - Prometheus
