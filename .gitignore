@@ -475,3 +475,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#grafana
+grafana/alerting
+grafana/csv
+grafana/plugins
+grafana/png
+grafana/grafana.db

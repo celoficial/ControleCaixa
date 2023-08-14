@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "dotnet-app"
+    static_configs:
+      - targets: ["fluxo-de-caixa:80"] # Nome do serviço definido no docker-compose.yml

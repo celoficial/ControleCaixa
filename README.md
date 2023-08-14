@@ -1,10 +1,12 @@
 # Controle de Fluxo de Caixa
 
-## Como Rodar a aplicação
+## Como Utilizar a aplicação
 
 Toda a aplicação está em container. Para realizar a instalação da aplicação use [Docker](https://www.docker.com/) e digite dentro da pasta raiz do projeto onde está o arquivo **docker-compose.yml** o seguinte comando:
 
 > docker compose up
+> A aplição terá a interface do swagger, onde você pode mandar as requisições de operações. Acessível na url: localhost
+> Para os relatorios você pode acessar pelo grafana na url: localhost:3000
 
 ## Tecnologias envolvidas
 
@@ -13,7 +15,6 @@ Toda a aplicação está em container. Para realizar a instalação da aplicaç�
 - Kafka
 - Prometheus
 - Grafana
-- RabbitMQ
 
 ## Considerações
 

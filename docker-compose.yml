@@ -8,6 +8,18 @@ services:
     ports:
       - "14333:1433"
 
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_SERVERS: "zookeeper:2888:3888"
+
   kafka:
     image: confluentinc/cp-kafka
     ports:
@@ -15,6 +27,9 @@ services:
     environment:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on:
+      - zookeeper
 
   prometheus:
     image: prom/prometheus
@@ -38,10 +53,12 @@ services:
 
   fluxo-de-caixa:
     build:
-      context: ./src/FluxoDeCaixa.Presentation
+      context: ./src
       dockerfile: Dockerfile
     ports:
       - "80:80"
     depends_on:
       - sql-server
       - kafka
+      - prometheus
+      - grafana

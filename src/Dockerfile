@@ -1,14 +1,15 @@
 # Imagem base do SDK do .NET
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+EXPOSE 80 443 5194 5001
 
 WORKDIR /app
 
 # Copiar csproj e restaurar dependências
-COPY ./FluxoDeCaixa.Presentation/*.csproj ./
-RUN dotnet restore
+#COPY *.csproj ./
+#RUN dotnet restore
 
 # Copiar código-fonte e compilar
-COPY ./FluxoDeCaixa.Presentation ./
+COPY . .
 RUN dotnet build -c Release -o out
 
 # Publicar a aplicação
