@@ -15,12 +15,14 @@
 
         }
 
-        public Transacao(decimal valor, bool isCredito)
+        public Transacao(decimal valor, bool isCredito, Guid fluxoCaixaId, FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa fluxoDeCaixa)
         {
             Id = Guid.NewGuid();
             Valor = valor;
             Data = DateTime.Now;
             this.isCredito = isCredito;
+            FluxoDeCaixaId = fluxoCaixaId;
+            FluxoDeCaixa = fluxoDeCaixa;
         }
     }
 }

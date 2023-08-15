@@ -1,12 +1,16 @@
-﻿using FluxoDeCaixa.Domain.Entities;
+﻿using FluxoDeCaixa.Application.Common.Interfaces;
+using FluxoDeCaixa.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace FluxoDeCaixa.Infrastructure.Data
 {
-    internal class FluxoDeCaixaDbContext : DbContext, IFluxoDeCaixaDbContext
+    public class FluxoDeCaixaDbContext : DbContext, IFluxoDeCaixaDbContext
     {
+
         public DbSet<FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa> FluxosDeCaixa { get; set; }
         public DbSet<Transacao> Transacoes { get; set; }
+        ChangeTracker IFluxoDeCaixaDbContext.ChangeTracker2 { get => this.ChangeTracker; }
 
         public FluxoDeCaixaDbContext(DbContextOptions<FluxoDeCaixaDbContext> options) : base(options)
         { }

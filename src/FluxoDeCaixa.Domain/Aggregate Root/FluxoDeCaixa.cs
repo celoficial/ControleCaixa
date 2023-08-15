@@ -5,7 +5,7 @@ namespace FluxoDeCaixa.Domain.Aggregate_Root
     public class FluxoDeCaixa
     {
         public Guid Id { get; private set; }
-        public DateOnly Data { get; private set; }
+        public DateTime Data { get; private set; }
 
         public List<Transacao> Transacoes { get; private set; } = new List<Transacao>();
 
@@ -14,7 +14,7 @@ namespace FluxoDeCaixa.Domain.Aggregate_Root
 
         }
 
-        public FluxoDeCaixa(List<Transacao> transacoes, DateOnly data)
+        public FluxoDeCaixa(List<Transacao> transacoes, DateTime data)
         {
             Transacoes = transacoes;
             Data = data;
@@ -23,8 +23,7 @@ namespace FluxoDeCaixa.Domain.Aggregate_Root
 
         public void AdicionarTransacao(decimal valor, bool isCredito)
         {
-            var transacao = new Transacao(valor, isCredito);
-            Transacoes.Add(transacao);
+            Transacoes.Add(new Transacao(valor, isCredito, Id, this));
         }
     }
 }

@@ -4,8 +4,8 @@ namespace FluxoDeCaixa.Application.Common.Interfaces.Persistence
 {
     public interface IFluxoDeCaixaRepository
     {
-        Task<decimal> CalcularConsolidadoTotal();
-        Task<FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa> ObterFluxoDeCaixaPorData(DateOnly data);
+        decimal CalcularConsolidadoTotal();
+        Task<FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa?> ObterFluxoDeCaixaPorData(DateTime data);
         Task AdicionarFluxoDeCaixaAsync(FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa fluxoDeCaixa);
         Task<List<Domain.Aggregate_Root.FluxoDeCaixa>> ObterTodosOsFluxosDeCaixaAsync();
         Task SaveChangesAsync();

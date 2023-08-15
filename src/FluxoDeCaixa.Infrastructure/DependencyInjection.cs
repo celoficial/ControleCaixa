@@ -1,4 +1,5 @@
-﻿using FluxoDeCaixa.Application.Common.Interfaces.Persistence;
+﻿using FluxoDeCaixa.Application.Common.Interfaces;
+using FluxoDeCaixa.Application.Common.Interfaces.Persistence;
 using FluxoDeCaixa.Infrastructure.Data;
 using FluxoDeCaixa.Infrastructure.Data.Persistence;
 using Microsoft.EntityFrameworkCore;

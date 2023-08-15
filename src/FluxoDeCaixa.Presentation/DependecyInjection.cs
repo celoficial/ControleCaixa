@@ -1,5 +1,6 @@
 ﻿using FluxoDeCaixa.Presentation.Common.Errors;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Prometheus.HttpClientMetrics;
 
 namespace FluxoDeCaixa.Presentation
 {
