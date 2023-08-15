@@ -1,0 +1,111 @@
+[
+  {
+    "dashboard": {
+      "type": "timeseries",
+      "title": "Transações",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "uid": "f2697d8c-5b30-47f1-afef-38c8837fe14f",
+        "type": "prometheus"
+      },
+      "id": 1,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "f2697d8c-5b30-47f1-afef-38c8837fe14f"
+          },
+          "refId": "A",
+          "expr": "transacoes_totais{tipo=\"credito\"}",
+          "range": true,
+          "instant": false,
+          "editorMode": "builder",
+          "legendFormat": "",
+          "format": "time_series",
+          "exemplar": false
+        },
+        {
+          "datasource": {
+            "uid": "f2697d8c-5b30-47f1-afef-38c8837fe14f",
+            "type": "prometheus"
+          },
+          "refId": "B",
+          "expr": "transacoes_totais{tipo=\"debito\"}",
+          "range": true,
+          "instant": false,
+          "hide": false,
+          "editorMode": "builder"
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "legend": {
+          "showLegend": true,
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "bars",
+            "lineInterpolation": "linear",
+            "barAlignment": 0,
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "spanNulls": false,
+            "showPoints": "auto",
+            "pointSize": 5,
+            "stacking": {
+              "mode": "none",
+              "group": "A"
+            },
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "axisColorMode": "text",
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "axisCenteredZero": false,
+            "hideFrom": {
+              "tooltip": false,
+              "viz": false,
+              "legend": false
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": null,
+                "color": "green"
+              },
+              {
+                "value": 80,
+                "color": "red"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    }
+  }
+]
