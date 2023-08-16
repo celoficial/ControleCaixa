@@ -48,6 +48,28 @@ namespace FluxoDeCaixa.Tests
             Assert.Single(fluxoDeCaixa.Transacoes);
             // Verifique outros aspectos da transação adicionada
         }
+
+        [Fact]
+        public async Task Handle_DeveAdicionarTransacaoAoCriarNovoFluxoDeCaixa()
+        {
+            // Arrange
+            var mockFluxoDeCaixaRepository = new Mock<IFluxoDeCaixaRepository>();
+            var mockDbContext = new Mock<IFluxoDeCaixaDbContext>();
+            var handler = new TransacaoCommandHandler(mockFluxoDeCaixaRepository.Object, mockDbContext.Object);
+
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+            mockFluxoDeCaixaRepository.Setup(repo => repo.ObterFluxoDeCaixaPorData(It.IsAny<DateTime>()))
+                .ReturnsAsync((Domain.Aggregate_Root.FluxoDeCaixa)null); // Simulando que não existe fluxo de caixa
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
+            var command = new TransacaoCommand(100, true);
+
+            // Act
+            var result = await handler.Handle(command, CancellationToken.None);
+
+            // Assert
+            Assert.True(result.Value);
+        }
     }
 }
 
