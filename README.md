@@ -27,6 +27,7 @@ Abaixo algumas considerações sobre a aplicação e cenário:
 - Dependendo do cenario onde essa aplicação rode, pode ser necessário trazer mais resiliência. Eu faria isso introduzindo mensageria e deixando assincrono o processamento das transações.
 - A aplicação está toda em container. O que já facilitaria caso fosse necessário escalar verticalmente e horizontalmente. Para realizar essa tarefa um caminho seria utilizar o kubernets para orquestrar e gerenciar os containers, além de um application load balancer e talvez implementar bases de dados para leitura e gravação. Como já utilizamos CQRS a aplicação está preparada para crescer para esse cenário.
 - Um ponto de já melhoria, seria pós entender um pouco melhor a necessidade do négocio já configurar o Grafana com os boards direto por arquivos para já deixar preparado no warm-up da aplicação. Um outro ponto importante de eu estar usando o prometheus e grafana é para implementar observabilidade e monitoramento da aplicação, o que nessa versão do código ainda não está configurado.
+- A aplicação possui testes unitários mas precisa aumentar o coverage.
 
 ## Desenho Big Picture
 

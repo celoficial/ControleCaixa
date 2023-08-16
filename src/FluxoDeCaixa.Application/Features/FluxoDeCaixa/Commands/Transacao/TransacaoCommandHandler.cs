@@ -7,7 +7,7 @@ using Prometheus;
 
 namespace FluxoDeCaixa.Application.Features.FluxoDeCaixa.Commands.Transacao
 {
-    internal class TransacaoCommandHandler : IRequestHandler<TransacaoCommand, ErrorOr<bool>>
+    public class TransacaoCommandHandler : IRequestHandler<TransacaoCommand, ErrorOr<bool>>
     {
         private readonly IFluxoDeCaixaRepository _fluxoDeCaixaRepository;
         private readonly IFluxoDeCaixaDbContext _dbContext;
