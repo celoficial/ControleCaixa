@@ -1,12 +1,8 @@
 # Imagem base do SDK do .NET
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-EXPOSE 80 443 5194 5001
+EXPOSE 80 443 5194
 
 WORKDIR /app
-
-# Copiar csproj e restaurar dependências
-#COPY *.csproj ./
-#RUN dotnet restore
 
 # Copiar código-fonte e compilar
 COPY . .

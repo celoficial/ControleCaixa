@@ -14,8 +14,7 @@ namespace FluxoDeCaixa.Infrastructure.EntityConfiguration
 
             builder.HasOne(t => t.FluxoDeCaixa)
                 .WithMany(f => f.Transacoes)
-                .HasForeignKey(t => t.FluxoDeCaixaId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(t => t.FluxoDeCaixaId);
         }
     }
 }

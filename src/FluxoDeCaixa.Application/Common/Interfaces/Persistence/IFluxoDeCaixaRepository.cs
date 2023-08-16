@@ -10,5 +10,6 @@ namespace FluxoDeCaixa.Application.Common.Interfaces.Persistence
         Task<List<Domain.Aggregate_Root.FluxoDeCaixa>> ObterTodosOsFluxosDeCaixaAsync();
         Task SaveChangesAsync();
         IDbContextTransaction BeginTransaction();
+        void UpdateFluxoDeCaixa(Domain.Aggregate_Root.FluxoDeCaixa fluxoDeCaixa);
     }
 }

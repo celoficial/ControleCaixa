@@ -33,7 +33,7 @@ namespace FluxoDeCaixa.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FluxosDeCaixa");
+                    b.ToTable("FluxosDeCaixa", (string)null);
                 });
 
             modelBuilder.Entity("FluxoDeCaixa.Domain.Entities.Transacao", b =>
@@ -59,7 +59,7 @@ namespace FluxoDeCaixa.Infrastructure.Migrations
 
                     b.HasIndex("FluxoDeCaixaId");
 
-                    b.ToTable("Transacoes");
+                    b.ToTable("Transacoes", (string)null);
                 });
 
             modelBuilder.Entity("FluxoDeCaixa.Domain.Entities.Transacao", b =>

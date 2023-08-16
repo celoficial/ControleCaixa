@@ -7,7 +7,7 @@ namespace FluxoDeCaixa.Application.Common.Interfaces
 {
     public interface IFluxoDeCaixaDbContext
     {
-        public ChangeTracker ChangeTracker2 { get; }
+        public ChangeTracker ChangeTracker { get; }
         public DbSet<FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa> FluxosDeCaixa { get; set; }
         public DbSet<Transacao> Transacoes { get; set; }
 

@@ -46,14 +46,18 @@ namespace FluxoDeCaixa.Infrastructure.Data.Persistence
 
         public async Task SaveChangesAsync()
         {
-            foreach (var entry in _dbContext.ChangeTracker2.Entries())
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public void UpdateFluxoDeCaixa(Domain.Aggregate_Root.FluxoDeCaixa fluxoDeCaixa)
+        {
+            foreach (var entry in _dbContext.ChangeTracker.Entries())
             {
                 if (entry.Entity is Transacao && entry.State == EntityState.Modified)
                 {
                     entry.State = EntityState.Added;
                 }
             }
-            await _dbContext.SaveChangesAsync();
         }
 
         public IDbContextTransaction BeginTransaction()

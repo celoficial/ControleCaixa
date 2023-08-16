@@ -10,7 +10,7 @@ namespace FluxoDeCaixa.Infrastructure.Data
 
         public DbSet<FluxoDeCaixa.Domain.Aggregate_Root.FluxoDeCaixa> FluxosDeCaixa { get; set; }
         public DbSet<Transacao> Transacoes { get; set; }
-        ChangeTracker IFluxoDeCaixaDbContext.ChangeTracker2 { get => this.ChangeTracker; }
+        public ChangeTracker DbContextChangeTracker => ChangeTracker;
 
         public FluxoDeCaixaDbContext(DbContextOptions<FluxoDeCaixaDbContext> options) : base(options)
         { }

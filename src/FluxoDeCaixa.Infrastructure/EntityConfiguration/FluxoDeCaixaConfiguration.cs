@@ -10,7 +10,8 @@ namespace FluxoDeCaixa.Infrastructure.EntityConfiguration
             builder.HasKey(e => e.Id);
 
             builder.HasMany(f => f.Transacoes)
-                   .WithOne(t => t.FluxoDeCaixa);
+                   .WithOne(t => t.FluxoDeCaixa)
+                   .HasForeignKey(t => t.FluxoDeCaixaId);
         }
     }
 }

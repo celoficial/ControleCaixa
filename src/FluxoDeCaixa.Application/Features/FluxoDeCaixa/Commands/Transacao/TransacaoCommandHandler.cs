@@ -37,12 +37,15 @@ namespace FluxoDeCaixa.Application.Features.FluxoDeCaixa.Commands.Transacao
                 var novoFC = new Domain.Aggregate_Root.FluxoDeCaixa(new List<Domain.Entities.Transacao>(), DateTime.Now);
                 await _fluxoDeCaixaRepository.AdicionarFluxoDeCaixaAsync(novoFC);
                 novoFC.AdicionarTransacao(request.valor, request.isCredito);
-                await _dbContext.SaveChangesAsync(cancellationToken);
-                _transacoesCounter.WithLabels(request.isCredito ? "credito" : "debito", request.valor.ToString(), DateTime.UtcNow.ToString()).Inc();
-                return true;
+
+            }
+            else
+            {
+                fluxoCaixa.AdicionarTransacao(request.valor, request.isCredito);
+                _fluxoDeCaixaRepository.UpdateFluxoDeCaixa(fluxoCaixa);
             }
 
-            fluxoCaixa.AdicionarTransacao(request.valor, request.isCredito);
+
             await _fluxoDeCaixaRepository.SaveChangesAsync();
             _transacoesCounter.WithLabels(request.isCredito ? "credito" : "debito", request.valor.ToString(), DateTime.UtcNow.ToString()).Inc();
             return true;
